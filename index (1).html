@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SourcEase — Your China Sourcing Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #07070E;
+  --bg2:     #0C0C18;
+  --accent:  #2563EB;
+  --accent2: #7C3AED;
+  --gold:    #F59E0B;
+  --w:       #FFFFFF;
+  --w80:     rgba(255,255,255,.80);
+  --w50:     rgba(255,255,255,.50);
+  --w20:     rgba(255,255,255,.20);
+  --w08:     rgba(255,255,255,.055);
+  --bd:      rgba(255,255,255,.08);
+  --bd2:     rgba(255,255,255,.13);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--w);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ─ UTILS ─ */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
+@media(max-width:560px){ .wrap{ padding:0 18px; } }
+
+.g {
+  background: linear-gradient(115deg, var(--accent) 10%, var(--accent2) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─ NAV ─ */
+header {
+  position: sticky; top: 0; z-index: 300;
+  background: rgba(7,7,14,.92);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--bd);
+}
+.nav {
+  display: flex; align-items: center;
+  height: 58px; gap: 0;
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 1.1rem; letter-spacing: -.01em;
+  text-decoration: none; white-space: nowrap; margin-right: 40px;
+  background: linear-gradient(115deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-links {
+  display: flex; align-items: center;
+  gap: 30px; list-style: none; flex: 1;
+}
+.nav-links a {
+  color: var(--w50); text-decoration: none;
+  font-size: .85rem; transition: color .15s;
+}
+.nav-links a:hover { color: var(--w); }
+.nav-btn {
+  margin-left: auto;
+  padding: 8px 18px; border-radius: 7px;
+  font-size: .83rem; font-weight: 600;
+  background: linear-gradient(115deg, var(--accent), var(--accent2));
+  color: #fff; text-decoration: none;
+  transition: opacity .15s; white-space: nowrap;
+}
+.nav-btn:hover { opacity: .82; }
+@media(max-width:680px){
+  .nav-links { display: none; }
+  .nav-logo { margin-right: auto; }
+}
+
+/* ─ HERO ─ */
+.hero {
+  min-height: 96vh;
+  display: flex; align-items: center;
+  padding: 100px 0 80px;
+  background: var(--bg2);
+  position: relative; overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--bd) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bd) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+.hero-blob {
+  position: absolute; pointer-events: none;
+  top: -200px; right: -120px;
+  width: 640px; height: 640px; border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(37,99,235,.14) 0%,
+    rgba(124,58,237,.09) 40%,
+    transparent 66%);
+}
+.hero-blob2 {
+  position: absolute; pointer-events: none;
+  bottom: -180px; left: -100px;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(124,58,237,.09) 0%,
+    transparent 65%);
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 4px 13px; border-radius: 99px;
+  border: 1px solid rgba(37,99,235,.32);
+  background: rgba(37,99,235,.08);
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: #60A5FA; margin-bottom: 26px;
+}
+.pill-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: #60A5FA;
+  animation: blink 2.4s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.2} }
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 5.2vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.06;
+  margin-bottom: 22px;
+  max-width: 740px;
+}
+
+.hero-sub {
+  font-size: 1.02rem; color: var(--w80);
+  max-width: 480px; line-height: 1.75;
+  margin-bottom: 38px;
+}
+
+.hero-ctas { display: flex; gap: 11px; flex-wrap: wrap; margin-bottom: 64px; }
+
+.btn-main {
+  padding: 13px 26px; border-radius: 8px;
+  font-size: .875rem; font-weight: 600;
+  background: linear-gradient(115deg, var(--accent), var(--accent2));
+  color: #fff; text-decoration: none;
+  transition: opacity .15s, transform .15s;
+}
+.btn-main:hover { opacity: .84; transform: translateY(-2px); }
+.btn-sec {
+  padding: 13px 26px; border-radius: 8px;
+  font-size: .875rem; font-weight: 500;
+  border: 1px solid var(--bd2);
+  color: var(--w80); background: var(--w08);
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.btn-sec:hover { border-color: rgba(37,99,235,.5); color: var(--w); }
+
+/* stats */
+.stats {
+  display: flex; gap: 0;
+  padding-top: 32px; border-top: 1px solid var(--bd);
+}
+.stat { padding: 0 36px 0 0; margin-right: 36px; border-right: 1px solid var(--bd); }
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem; font-weight: 700; line-height: 1;
+  background: linear-gradient(115deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-l { font-size: .75rem; color: var(--w50); margin-top: 4px; }
+
+/* ─ SECTION ─ */
+.sec { padding: 96px 0; }
+.sec-alt { background: var(--bg2); }
+hr.div { border: none; border-top: 1px solid var(--bd); }
+
+.ey {
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: #60A5FA; margin-bottom: 9px;
+}
+.sh {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.15;
+  margin-bottom: 12px;
+}
+.ss {
+  color: var(--w80); max-width: 460px;
+  font-size: .92rem; line-height: 1.72;
+  margin-bottom: 48px;
+}
+
+/* ─ HOW WE WORK ─ */
+.how-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  border: 1px solid var(--bd); border-radius: 16px; overflow: hidden;
+}
+@media(max-width:640px){ .how-grid{ grid-template-columns:1fr; } }
+.how-item {
+  padding: 32px 28px;
+  border-right: 1px solid var(--bd);
+  border-bottom: 1px solid var(--bd);
+  background: var(--w08);
+  transition: background .2s;
+}
+.how-item:hover { background: rgba(37,99,235,.06); }
+.how-item:nth-child(2n){ border-right: none; }
+.how-item:nth-last-child(-n+2){ border-bottom: none; }
+@media(max-width:640px){
+  .how-item{ border-right:none !important; }
+  .how-item:last-child{ border-bottom:none; }
+}
+.how-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.2rem; font-weight: 700; line-height: 1;
+  color: rgba(37,99,235,.22);
+  letter-spacing: -.04em;
+  margin-bottom: 16px;
+}
+.how-item h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .93rem; font-weight: 600; margin-bottom: 7px;
+}
+.how-item p { font-size: .82rem; color: var(--w80); line-height: 1.65; }
+
+/* ─ PRODUCTS WE SOURCE ─ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media(max-width:760px){ .products-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:460px){ .products-grid{ grid-template-columns:1fr; } }
+
+.pcard {
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 24px 20px;
+  background: var(--w08);
+  transition: border-color .2s, transform .2s;
+}
+.pcard:hover {
+  border-color: rgba(37,99,235,.38);
+  transform: translateY(-3px);
+}
+.pcard-em {
+  font-size: 1.7rem; margin-bottom: 14px; display: block;
+  line-height: 1;
+}
+.pcard h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .9rem; font-weight: 600; margin-bottom: 6px;
+}
+.pcard p { font-size: .8rem; color: var(--w80); line-height: 1.6; }
+.pcard-note {
+  display: inline-block; margin-top: 12px;
+  font-size: .68rem; letter-spacing: .05em;
+  color: #60A5FA;
+  border: 1px solid rgba(37,99,235,.25);
+  border-radius: 99px; padding: 2px 9px;
+}
+
+/* ─ WHY US ─ */
+.why-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+}
+@media(max-width:760px){ .why-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:460px){ .why-grid{ grid-template-columns:1fr; } }
+.wc {
+  border: 1px solid var(--bd);
+  border-radius: 13px; padding: 24px 20px;
+  background: var(--w08);
+}
+.wc-icon { font-size: 1.4rem; margin-bottom: 13px; }
+.wc h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .88rem; font-weight: 600; margin-bottom: 6px;
+}
+.wc p { font-size: .8rem; color: var(--w80); line-height: 1.6; }
+
+/* ─ TESTIMONIAL STRIP ─ */
+.tstrip {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+}
+@media(max-width:680px){ .tstrip{ grid-template-columns:1fr; } }
+.tcard {
+  border: 1px solid var(--bd); border-radius: 13px;
+  padding: 24px 20px; background: var(--w08);
+}
+.tcard-stars { color: var(--gold); font-size: .85rem; margin-bottom: 10px; letter-spacing: 2px; }
+.tcard p { font-size: .82rem; color: var(--w80); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+.tcard-who { font-size: .75rem; color: var(--w50); }
+.tcard-who strong { color: var(--w80); font-weight: 500; display: block; }
+
+/* ─ CONTACT ─ */
+.contact-layout {
+  display: grid; grid-template-columns: 2fr 3fr; gap: 64px; align-items: start;
+}
+@media(max-width:740px){ .contact-layout{ grid-template-columns:1fr; gap:36px; } }
+
+.cl h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 700; letter-spacing: -.02em; line-height: 1.2;
+  margin-bottom: 12px;
+}
+.cl p { font-size: .88rem; color: var(--w80); margin-bottom: 28px; }
+.ci {
+  display: flex; align-items: flex-start;
+  gap: 11px; margin-bottom: 13px;
+}
+.ci-ico {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 7px;
+  background: var(--w08); border: 1px solid var(--bd);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; margin-top: 1px;
+}
+.ci-text { font-size: .83rem; line-height: 1.5; }
+.ci-text span { color: var(--w50); font-size: .7rem; display: block; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1px; }
+.ci-text strong { color: var(--w80); font-weight: 400; }
+
+/* form */
+.cform { display: flex; flex-direction: column; gap: 11px; }
+.cr { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+@media(max-width:460px){ .cr{ grid-template-columns:1fr; } }
+.cform input, .cform select, .cform textarea {
+  background: var(--w08); border: 1px solid var(--bd);
+  border-radius: 8px; padding: 11px 13px;
+  color: var(--w); font-family: 'Inter', sans-serif; font-size: .86rem;
+  outline: none; width: 100%; transition: border-color .15s;
+  -webkit-appearance: none;
+}
+.cform input::placeholder, .cform textarea::placeholder { color: var(--w20); }
+.cform input:focus, .cform select:focus, .cform textarea:focus {
+  border-color: rgba(37,99,235,.55);
+}
+.cform select option { background: #0f0f22; color:#fff; }
+.cform textarea { min-height: 100px; resize: vertical; line-height: 1.6; }
+.csend {
+  padding: 13px; border-radius: 8px; border: none; cursor: pointer;
+  background: linear-gradient(115deg, var(--accent), var(--accent2));
+  color: #fff; font-family: 'Inter', sans-serif;
+  font-size: .88rem; font-weight: 600; transition: opacity .15s;
+}
+.csend:hover { opacity: .84; }
+.cnote { font-size: .7rem; color: var(--w20); text-align: center; }
+
+/* ─ FOOTER ─ */
+footer { border-top: 1px solid var(--bd); padding: 30px 0; }
+.fi {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+.fl {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  background: linear-gradient(115deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.flinks { display: flex; gap: 22px; }
+.flinks a { font-size: .78rem; color: var(--w20); text-decoration: none; transition: color .15s; }
+.flinks a:hover { color: var(--w50); }
+.fcopy { font-size: .75rem; color: var(--w20); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="#" class="nav-logo">SourcEase</a>
+      <ul class="nav-links">
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-btn">Submit a Request</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+  <div class="wrap hero-content">
+    <div class="pill"><span class="pill-dot"></span>China Sourcing Agent · Shenzhen Based</div>
+    <h1>We Source It.<br>You Sell It.<br><span class="g">We Handle the Rest.</span></h1>
+    <p class="hero-sub">Tell us what you need — LED screens, laser cutters, or anything in between. We find the best factory, negotiate the price, inspect quality, and ship to your door.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-main">Tell Us What You Need</a>
+      <a href="#how" class="btn-sec">See How It Works</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">300+</div><div class="stat-l">Happy Clients</div></div>
+      <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Countries Served</div></div>
+      <div class="stat"><div class="stat-n">5yr</div><div class="stat-l">Sourcing Experience</div></div>
+      <div class="stat"><div class="stat-n">Free</div><div class="stat-l">Initial Sourcing Quote</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="ey">How It Works</div>
+    <h2 class="sh">From Your Request to Your Warehouse</h2>
+    <p class="ss">No experience needed. Tell us what you want — we take care of everything from factory research to final delivery.</p>
+    <div class="how-grid">
+      <div class="how-item">
+        <div class="how-num">01</div>
+        <h3>Submit Your Request</h3>
+        <p>Share product details, target quantity, and budget. We respond with a sourcing plan and estimated cost within 24 hours.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">02</div>
+        <h3>We Find the Right Factory</h3>
+        <p>We identify and vet 3–5 qualified suppliers. You get a comparison report with real pricing — no hidden markups.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">03</div>
+        <h3>Sample &amp; Confirm</h3>
+        <p>We arrange samples from your chosen factory. Once you approve, we lock the order and manage all communication.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">04</div>
+        <h3>Production &amp; QC</h3>
+        <p>We follow up during production, conduct pre-shipment inspection, and send you photos and a full QC report.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">05</div>
+        <h3>Shipping &amp; Customs</h3>
+        <p>We arrange sea, air, or express shipping. Export docs and customs clearance handled. Tracking provided throughout.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">06</div>
+        <h3>After-Sales Support</h3>
+        <p>We stay on until you're satisfied. Any quality issues are taken up with the factory — we protect your interests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRODUCTS -->
+<section class="sec sec-alt" id="products">
+  <div class="wrap">
+    <div class="ey">What We Source</div>
+    <h2 class="sh">Specialist Products, Not Just General Goods</h2>
+    <p class="ss">We specialize in technical and industrial products that require factory know-how — not just commodity items from Alibaba.</p>
+    <div class="products-grid">
+      <div class="pcard">
+        <span class="pcard-em">🖥️</span>
+        <h3>LED Screens &amp; Displays</h3>
+        <p>Indoor/outdoor LED panels, pixel pitch customization, controller systems. We work directly with screen manufacturers in Shenzhen.</p>
+        <span class="pcard-note">Custom Size · P1.5–P10</span>
+      </div>
+      <div class="pcard">
+        <span class="pcard-em">✂️</span>
+        <h3>Handheld Laser Cutters</h3>
+        <p>Portable fiber laser welders &amp; cutters for metal, industrial and consumer models. CE/FDA certified options available.</p>
+        <span class="pcard-note">CE · FDA Certified</span>
+      </div>
+      <div class="pcard">
+        <span class="pcard-em">⚡</span>
+        <h3>Power Electronics</h3>
+        <p>Inverters, UPS systems, EV chargers, solar components, and industrial power supplies.</p>
+        <span class="pcard-note">UL · CE · TÜV</span>
+      </div>
+      <div class="pcard">
+        <span class="pcard-em">🏭</span>
+        <h3>Industrial Equipment</h3>
+        <p>CNC machines, laser engravers, welding equipment, pneumatic tools. Factory-direct sourcing with full specs matched.</p>
+        <span class="pcard-note">Spec Matching</span>
+      </div>
+      <div class="pcard">
+        <span class="pcard-em">🔧</span>
+        <h3>Hardware &amp; Components</h3>
+        <p>Custom metal parts, PCBs, electronic components, and OEM assemblies. MOQ flexible.</p>
+        <span class="pcard-note">OEM · Low MOQ</span>
+      </div>
+      <div class="pcard" style="border-style:dashed; border-color: rgba(255,255,255,.15); background:transparent; display:flex; flex-direction:column; align-items:flex-start; justify-content:center;">
+        <span class="pcard-em">💬</span>
+        <h3>Something Else?</h3>
+        <p>We source almost anything manufactured in China. Just describe what you need.</p>
+        <a href="#contact" style="display:inline-block;margin-top:14px;font-size:.78rem;color:#60A5FA;text-decoration:none;">Tell us what you need →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- WHY US -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="ey">Why Work With Us</div>
+    <h2 class="sh">A Real Agent, Not a Platform</h2>
+    <p class="ss">We're a small, dedicated team — you talk to the same person from day one. No middlemen, no disappearing after payment.</p>
+    <div class="why-grid">
+      <div class="wc">
+        <div class="wc-icon">🔍</div>
+        <h4>Transparent Sourcing</h4>
+        <p>You see the factory names, real price quotes, and comparison reports. No hidden margins on top of factory price.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-icon">🧪</div>
+        <h4>Strict Quality Control</h4>
+        <p>Pre-shipment inspection with photos and written QC report. We check more thoroughly than standard 3rd-party firms.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-icon">🗣️</div>
+        <h4>Dedicated Agent</h4>
+        <p>One contact person throughout. Fast replies on WhatsApp — no bouncing between departments.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-icon">🏭</div>
+        <h4>Factory-Level Pricing</h4>
+        <p>We source from verified factories, not resellers. Our network gives you prices lower than Alibaba listings.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-icon">🚢</div>
+        <h4>End-to-End Logistics</h4>
+        <p>Sea, air, express. FOB, CIF, DDP. Export customs handled. We coordinate with top freight forwarders.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-icon">🛡️</div>
+        <h4>Your Interests First</h4>
+        <p>If there are defects, we fight to get the factory to fix it or compensate. We don't disappear after shipment.</p>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div style="margin-top:48px">
+      <div class="tstrip">
+        <div class="tcard">
+          <div class="tcard-stars">★★★★★</div>
+          <p>"They found us a better LED screen manufacturer than we'd ever found on our own — and 18% cheaper than our previous supplier."</p>
+          <div class="tcard-who"><strong>James R.</strong>AV Equipment Distributor, UK</div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-stars">★★★★★</div>
+          <p>"The handheld laser cutters passed all CE certification checks. QC report was detailed and professional. Will order again."</p>
+          <div class="tcard-who"><strong>Marco V.</strong>Industrial Tools Importer, Italy</div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-stars">★★★★★</div>
+          <p>"Fast, honest, and very responsive on WhatsApp. Saved me from a bad factory on our first enquiry — worth every penny."</p>
+          <div class="tcard-who"><strong>Sarah T.</strong>Amazon Seller, USA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CONTACT -->
+<section class="sec sec-alt" id="contact">
+  <div class="wrap">
+    <div class="contact-layout">
+      <div class="cl">
+        <div class="ey">Get in Touch</div>
+        <h2>Tell Us What You Need</h2>
+        <p>Describe your product and we'll come back with a sourcing plan, estimated cost, and timeline — within 24 hours, no obligation.</p>
+        <div class="ci">
+          <div class="ci-ico">📧</div>
+          <div class="ci-text"><span>Email</span><strong>hello@sourcease.co</strong></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ico">💬</div>
+          <div class="ci-text"><span>WhatsApp</span><strong>+86 138 0000 0000</strong></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ico">🕐</div>
+          <div class="ci-text"><span>Response Time</span><strong>Within 24 hours (Mon–Fri)</strong></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ico">📍</div>
+          <div class="ci-text"><span>Based in</span><strong>Shenzhen, China</strong></div>
+        </div>
+        <div style="margin-top:28px; padding:18px 20px; border:1px solid var(--bd); border-radius:12px; background:var(--w08);">
+          <p style="font-size:.72rem;color:var(--w50);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em">Initial Sourcing</p>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;background:linear-gradient(115deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Free</p>
+          <p style="font-size:.78rem;color:var(--w80);margin-top:2px">No fee to receive a quote and supplier comparison. We charge a service commission only on confirmed orders.</p>
+        </div>
+      </div>
+
+      <form class="cform" onsubmit="onSubmit(event)">
+        <div class="cr">
+          <input type="text" placeholder="Your Name *" required>
+          <input type="email" placeholder="Email *" required>
+        </div>
+        <div class="cr">
+          <input type="text" placeholder="Company (optional)">
+          <input type="text" placeholder="WhatsApp / Phone">
+        </div>
+        <div class="cr">
+          <input type="text" placeholder="Country">
+          <select>
+            <option value="" disabled selected>Product Category</option>
+            <option>LED Screens &amp; Displays</option>
+            <option>Handheld Laser Cutters</option>
+            <option>Power Electronics</option>
+            <option>Industrial Equipment</option>
+            <option>Hardware &amp; Components</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <input type="text" placeholder="Estimated Quantity / Budget (optional)">
+        <textarea placeholder="Describe what you need — product specs, certifications required, target market, any reference links..."></textarea>
+        <button type="submit" class="csend" id="csend">Submit Request →</button>
+        <p class="cnote">Free initial sourcing report &nbsp;·&nbsp; Reply within 24h &nbsp;·&nbsp; No spam</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fi">
+      <div>
+        <div class="fl">SourcEase</div>
+        <p class="fcopy" style="margin-top:4px">Shenzhen, China &nbsp;·&nbsp; Your Dedicated China Sourcing Agent</p>
+      </div>
+      <nav class="flinks">
+        <a href="#how">How It Works</a>
+        <a href="#products">Products</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="fcopy">© 2025 SourcEase. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function onSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('csend');
+  btn.textContent = '✓ Request Received — we\'ll reply within 24h';
+  btn.style.background = 'linear-gradient(115deg,#059669,#047857)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Submit Request →';
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 4500);
+}
+
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (scrollY >= s.offsetTop - 80) cur = s.id; });
+  links.forEach(a => {
+    const on = a.getAttribute('href') === '#' + cur;
+    a.style.color = on ? '#fff' : '';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
